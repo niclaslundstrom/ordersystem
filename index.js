@@ -1,7 +1,16 @@
-const express = require('express')
+
+//const express = require('express')
 const app = express()
 const port = 3000
+import express from 'express'
+import user from '../routes/users.js'
 
+
+app.get('/', (req, res) => {
+  res.send('hej')
+})
+
+app.use("/user", user);
 
 app.listen(port, () => {
   console.log(`tjenare hejsan http://localhost:${port}`)
