@@ -1,9 +1,8 @@
 import express from 'express'
-const router = express.
-  Router()
+const user = express.Router()
 
 
-router
+user
   .get('all', (req, res) => {
     res.send('välkommen till user')
   })
@@ -22,7 +21,7 @@ router
   })
 
 
-export default router
+export default user
 
 
 
