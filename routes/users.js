@@ -3,7 +3,8 @@ const user = express.Router()
 
 
 user
-  .get('all', (req, res) => {
+  .get('/', (req, res) => {
+    console.log(req.body)
     res.send('välkommen till user')
   })
 
@@ -12,7 +13,7 @@ user
     res.send(`/gregger/id ${id}`)
   })
 
-  .post(':id', (req, res) => {
+  .post('/', (req, res) => {
     res.send(`post /user/ ${req.params}`)
   })
 

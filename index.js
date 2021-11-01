@@ -13,15 +13,11 @@ app.get("/", (req, res) => {
   res.send("hej")
 })
 
-app.use("/user", router)
-
-app.post("/user", (req, res) => {
-  res.send("postar")
-})
+app.use("/user", user)
 
 
 mongoose.connect(
-  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/cluster0?retryWrites=true&w=majority",
   () => console.log("connected to db maybe")
 )
 
