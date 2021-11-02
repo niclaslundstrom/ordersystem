@@ -1,28 +1,38 @@
 import express from 'express'
-const router = express.
-  Router()
+import userModel from "../model.js"
+const appUser = express.Router()
 
 
-router
-  .get('all', (req, res) => {
-    res.send('välkommen till user')
+appUser
+  .get("/", async (req, res) => {
+    const users = await userModel.find({});
+
+    try {
+      res.send(users);
+    } catch (error) {
+      res.status(500).send(error);
+    }
   })
 
-  .get(':id', (req, res) => {
-    const id = req.params.id
-    res.send(`/gregger/id ${id}`)
+  .post("/", async (req, res) => {
+
+    const user = new userModel(req.body);
+
+    try {
+      await user.save();
+      res.send(user);
+    } catch (error) {
+      res.status(500).send(error);
+    }
+
+  })
+  .delete('/:id', (req, res) => {
+    res.send('delete /user/id')
   })
 
-  .post(':id', (req, res) => {
-    res.send(`post /user/ ${req.params}`)
-  })
-
-  .delete(':id', (req, res) => {
-    res.send('delete /User/id')
-  })
 
 
-export default router
+export default appUser
 
 
 
