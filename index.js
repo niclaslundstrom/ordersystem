@@ -21,6 +21,12 @@ mongoose.connect(
   () => console.log("connected to db maybe")
 )
 
+const db = mongoose.connection
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+  console.log("Connected successfully");
+});
+
 app.listen(port, () => {
   console.log(`tjenare hejsan http://localhost:${port}`)
 })
