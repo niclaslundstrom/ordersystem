@@ -16,6 +16,17 @@ appUser
     }
   })
 
+  .get('/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+      const user = await userModel.findOne({ "_id": (id) })
+      res.send(user)
+    } catch (err) {
+      console.error("Error GET /user/id", err)
+      res.status(501).send(SERVER_ERROR)
+    }
+  })
+
   .post("/", async (req, res) => {
     console.log(req.body)
     const user = new userModel(req.body);
@@ -28,8 +39,17 @@ appUser
     }
 
   })
-  .delete('/:id', (req, res) => {
-    res.send('delete /user/id')
+
+  .delete('/:id', async (req, res) => {
+    const id = req.params.id
+    try {
+      const deleteUser = await userModel.deleteOne({ "_id": (id) })
+      res.send(deleteUser)
+      res.status(200).send({ deleted: true })
+    } catch (err) {
+      console.error("Error DELETE /user", err)
+      res.status(501).send(SERVER_ERROR)
+    }
   })
 
 
