@@ -2,6 +2,8 @@ import express from 'express'
 import userModel from "../model.js"
 const appUser = express.Router()
 
+appUser.use(express.urlencoded({ extended: true }));
+appUser.use(express.json());
 
 appUser
   .get("/", async (req, res) => {
@@ -15,7 +17,7 @@ appUser
   })
 
   .post("/", async (req, res) => {
-
+    console.log(req.body)
     const user = new userModel(req.body);
 
     try {
