@@ -15,7 +15,7 @@ app.post("/user", (req, res) => {
 })
 
 mongoose.connect(
-  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/Cluster0?retryWrites=true&w=majority",
   () => console.log("connected to db maybe")
 )
 app.listen(port, () => {
