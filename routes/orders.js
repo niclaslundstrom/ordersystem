@@ -1,5 +1,5 @@
 import express from "express"
-import orderModel from "../models/orderModel.js"
+import Orders from "../models/ordersModel.js"
 
 const appOrder = express.Router()
 
@@ -8,7 +8,7 @@ appOrder.use(express.json())
 
 appOrder
   .get("/", async (req, res) => {
-    const orders = await orderModel.find({})
+    const orders = await Orders.find({})
 
     try {
       res.send(orders)
@@ -20,7 +20,7 @@ appOrder
   .get("/:id", async (req, res) => {
     const id = req.params.id
     try {
-      const order = await orderModel.findOne({ _id: id })
+      const order = await Orders.findOne({ _id: id })
       res.send(order)
     } catch (err) {
       console.error("Error GET /order/id", err)
@@ -30,7 +30,7 @@ appOrder
 
   .post("/", async (req, res) => {
     console.log(req.body)
-    const order = new orderModel(req.body)
+    const order = new Orders(req.body)
 
     try {
       await order.save()
@@ -43,7 +43,7 @@ appOrder
   .delete("/:id", async (req, res) => {
     const id = req.params.id
     try {
-      const deleteOrder = await orderModel.deleteOne({ _id: id })
+      const deleteOrder = await Orders.deleteOne({ _id: id })
       res.send(deleteOrder)
       res.status(200).send({ deleted: true })
     } catch (err) {
