@@ -1,25 +1,25 @@
-import express from 'express'
+import express from "express"
 import userModel from "../model.js"
 const appUser = express.Router()
 
-appUser.use(express.urlencoded({ extended: true }));
-appUser.use(express.json());
+appUser.use(express.urlencoded({ extended: true }))
+appUser.use(express.json())
 
 appUser
   .get("/", async (req, res) => {
-    const users = await userModel.find({});
+    const users = await userModel.find({})
 
     try {
-      res.send(users);
+      res.send(users)
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error)
     }
   })
 
-  .get('/:id', async (req, res) => {
+  .get("/:id", async (req, res) => {
     const id = req.params.id
     try {
-      const user = await userModel.findOne({ "_id": (id) })
+      const user = await userModel.findOne({ _id: id })
       res.send(user)
     } catch (err) {
       console.error("Error GET /user/id", err)
@@ -29,21 +29,20 @@ appUser
 
   .post("/", async (req, res) => {
     console.log(req.body)
-    const user = new userModel(req.body);
+    const user = new userModel(req.body)
 
     try {
-      await user.save();
-      res.send(user);
+      await user.save()
+      res.send(user)
     } catch (error) {
-      res.status(500).send(error);
+      res.status(500).send(error)
     }
-
   })
 
-  .delete('/:id', async (req, res) => {
+  .delete("/:id", async (req, res) => {
     const id = req.params.id
     try {
-      const deleteUser = await userModel.deleteOne({ "_id": (id) })
+      const deleteUser = await userModel.deleteOne({ _id: id })
       res.send(deleteUser)
       res.status(200).send({ deleted: true })
     } catch (err) {
@@ -52,9 +51,4 @@ appUser
     }
   })
 
-
-
 export default appUser
-
-
-
