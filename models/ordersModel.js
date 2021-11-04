@@ -2,16 +2,16 @@ import mongoose from 'mongoose'
 
 const OrdersSchema = new mongoose.Schema(
   {
-    Product: {
+    UsersId: {
       type: String,
       required: true
     },
-    LastName: {
+    ProductsId: {
       type: String,
       required: true
     },
-    Adress: {
-      type: String,
+    Date: {
+      type: Number,
       required: true
     }
   },

@@ -28,6 +28,7 @@ appOrder
     }
   })
 
+
   .post("/", async (req, res) => {
     console.log(req.body)
     const order = new Orders(req.body)
@@ -40,6 +41,7 @@ appOrder
     }
   })
 
+
   .delete("/:id", async (req, res) => {
     const id = req.params.id
     try {
@@ -51,5 +53,8 @@ appOrder
       res.status(501).send(SERVER_ERROR)
     }
   })
+
+// /orders/usersid
+// /orders/usersid/productid
 
 export default appOrder
