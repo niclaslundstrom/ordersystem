@@ -1,21 +1,55 @@
-import express from 'express'
-const orders = express.Router()
+import express from "express"
+import orderModel from "../models/orderModel.js"
 
-orders
-  .get("/order", (req, res) => {
-    res.send("Hello order\n")
+const appOrder = express.Router()
+
+appOrder.use(express.urlencoded({ extended: true }))
+appOrder.use(express.json())
+
+appOrder
+  .get("/", async (req, res) => {
+    const orders = await orderModel.find({})
+
+    try {
+      res.send(orders)
+    } catch (error) {
+      res.status(500).send(error)
+    }
   })
 
-  .get("/order/:id", (req, res) => {
+  .get("/:id", async (req, res) => {
     const id = req.params.id
-    res.send(`/gregger/id ${id}`)
+    try {
+      const order = await orderModel.findOne({ _id: id })
+      res.send(order)
+    } catch (err) {
+      console.error("Error GET /order/id", err)
+      res.status(501).send(SERVER_ERROR)
+    }
   })
 
-  .post("/order", (req, res) => {
-    res.send(`post /order/id ${req.params}`)
+  .post("/", async (req, res) => {
+    console.log(req.body)
+    const order = new orderModel(req.body)
+
+    try {
+      await order.save()
+      res.send(order)
+    } catch (error) {
+      res.status(500).send(error)
+    }
   })
 
-  .delete("/order", (req, res) => {
-    res.send("delete /order/id")
+  .delete("/:id", async (req, res) => {
+    const id = req.params.id
+    try {
+      const deleteOrder = await orderModel.deleteOne({ _id: id })
+      res.send(deleteOrder)
+      res.status(200).send({ deleted: true })
+    } catch (err) {
+      console.error("Error DELETE /order", err)
+      res.status(501).send(SERVER_ERROR)
+    }
   })
-export default orders
+
+export default appOrder
