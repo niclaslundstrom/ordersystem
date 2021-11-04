@@ -1,0 +1,10 @@
+
+Users:
+curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/users/{id}
+
+ curl -H "Content-Type: application/json" -X POST http://localhost:3000/users -d "{\"FirstName\":\"Sara\",\"LastName\":\"Larsson\",\"Adress\":\"garbovägen\"}"
+
+Products:
+curl -H "Content-Type: application/json" -X POST http://localhost:3000/products -d "{\"ProductName\":\"stege\",\"Cost\":259,\"Amount\": 58}"                  
+
+curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/products/{id}
