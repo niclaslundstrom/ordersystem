@@ -1,5 +1,5 @@
 import express from 'express'
-import Products from "../models/productsmodel.js"
+import Products from "../models/productsModel.js"
 const appProduct = express.Router()
 
 appProduct.use(express.urlencoded({ extended: true }))

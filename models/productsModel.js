@@ -1,8 +1,8 @@
 import mongoose from 'mongoose'
 
-const PorductsSchema = new mongoose.Schema(
+const ProductsSchema = new mongoose.Schema(
   {
-    PruductName: {
+    ProductName: {
       type: String,
       required: true
     },
@@ -18,6 +18,6 @@ const PorductsSchema = new mongoose.Schema(
   { versionKey: false }
 )
 
-const Porducts = mongoose.model('Porducts', PorductsSchema)
+const Products = mongoose.model('Products', ProductsSchema)
 
-export default Porducts
+export default Products

@@ -2,20 +2,22 @@
 const app = express()
 const port = 3000
 import express from "express"
-import user from "./routes/users.js"
-import product from "./routes/product.js"
-import orders from "./routes/orders.js"
+import User from "./routes/users.js"
+import Product from "./routes/products.js"
+import Order from "./routes/orders.js"
 import mongoose from "mongoose"
 
 app.get("/", (req, res) => {
   res.send("hej")
 })
 
-app.use("/user", user)
+app.use("/users", User)
+app.use("/products", Product)
+app.use("/orders", Order)
 
 mongoose.connect(
-  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/Cluster0?retryWrites=true&w=majority",
-  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/cluster0?retryWrites=true&w=majority",
+  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/ordersystem?retryWrites=true&w=majority",
+
   () => console.log("connected to db maybe")
 )
 
