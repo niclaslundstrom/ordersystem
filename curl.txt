@@ -8,3 +8,6 @@ Products:
 curl -H "Content-Type: application/json" -X POST http://localhost:3000/products -d "{\"ProductName\":\"stege\",\"Cost\":259,\"Amount\": 58}"                  
 
 curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/products/{id}
+
+Orders:
+curl -H "Content-Type: application/json" -X POST http://localhost:3000/orders -d "{\"UsersId\":\"6183e15dc180d00fece7fc59\",\"ProductsId\":\"6183e0d2c180d00fece7fc52\",\"Date\": 20210530}" 
