@@ -19,8 +19,26 @@ appOrder
 
   .get("/:id", async (req, res) => {
     const id = req.params.id
+
     try {
-      const order = await Orders.findOne({ _id: id })
+      const order = await Orders.aggregate([
+        { $match: { $or: [{ _id: id }, { UsersId: id }] } }
+      ])
+      res.send(order)
+    } catch (err) {
+      console.error("Error GET /order/id", err)
+      res.status(501).send(SERVER_ERROR)
+    }
+  })
+
+  .get("/:id/:productId", async (req, res) => {
+    const productid = req.params.productId
+    const id = req.params.id
+
+    try {
+      const order = await Orders.aggregate([
+        { $match: { $and: [{ UsersId: id }, { ProductsId: productid }] } }
+      ])
       res.send(order)
     } catch (err) {
       console.error("Error GET /order/id", err)
