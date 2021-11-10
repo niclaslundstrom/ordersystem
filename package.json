@@ -9,11 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://Nilun1891@bitbucket.org/Nilun1891/ordersysrem.git"
+    "url": "git+https://github.com/niclaslundstrom/ordersystem.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://bitbucket.org/Nilun1891/ordersysrem#readme",
+  "homepage": "https://github.com/niclaslundstrom/ordersystem.#readme",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
