@@ -1,16 +1,16 @@
 
 Users:
-curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/users/{id}
+curl -H "Content-Type: application/json" -X DELETE https://orderssystem.azurewebsites.net/users/{id}
 
- curl -H "Content-Type: application/json" -X POST http://localhost:3000/users -d "{\"FirstName\":\"Sara\",\"LastName\":\"Larsson\",\"Adress\":\"garbovägen\"}"
+ curl -H "Content-Type: application/json" -X POST https://orderssystem.azurewebsites.net/users -d "{\"FirstName\":\"Sara\",\"LastName\":\"Larsson\",\"Adress\":\"garbovägen\"}"
 
 Products:
-curl -H "Content-Type: application/json" -X POST http://localhost:3000/products -d "{\"ProductName\":\"stege\",\"Cost\":259,\"Amount\": 58}"                  
+curl -H "Content-Type: application/json" -X POST https://orderssystem.azurewebsites.net/products -d "{\"ProductName\":\"stege\",\"Cost\":259,\"Amount\": 58}"                  
 
-curl -H "Content-Type: application/json" -X DELETE http://localhost:3000/products/{id}
+curl -H "Content-Type: application/json" -X DELETE https://orderssystem.azurewebsites.net/products/{id}
 
 Orders:
-curl -H "Content-Type: application/json" -X POST http://localhost:3000/orders -d "{\"UsersId\":\"6183e15dc180d00fece7fc59\",\"ProductsId\":\"6183e0d2c180d00fece7fc52\",\"Date\": 20210530}" 
+curl -H "Content-Type: application/json" -X POST https://orderssystem.azurewebsites.net/orders -d "{\"UsersId\":\"6183e15dc180d00fece7fc59\",\"ProductsId\":\"6183e0d2c180d00fece7fc52\",\"Date\": 20210530}" 
 
 
 userid: 6183de50c180d00fece7fc4b, 6183e15dc180d00fece7fc59
