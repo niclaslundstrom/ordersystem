@@ -1,30 +1,28 @@
 //const express = require('express')
 const app = express()
 const port = 3000
-import express from "express"
-import User from "./routes/users.js"
-import Product from "./routes/products.js"
-import Order from "./routes/orders.js"
-import mongoose from "mongoose"
+import express from 'express'
+import User from './routes/users.js'
+import Product from './routes/products.js'
+import Order from './routes/orders.js'
+import mongoose from 'mongoose'
 
-app.get("/", (req, res) => {
-  res.send("hej")
+app.get('/', (req, res) => {
+  res.send('hej')
 })
 
-app.use("/users", User)
-app.use("/products", Product)
-app.use("/orders", Order)
+app.use('/users', User)
+app.use('/products', Product)
+app.use('/orders', Order)
 
-mongoose.connect(
-  "mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/ordersystem?retryWrites=true&w=majority",
+const dbconn = process.env.DBCONN || '<defult>'
 
-  () => console.log("connected to db maybe")
-)
+mongoose.connect(dbconn, () => console.log('connected to db maybe'))
 
 const db = mongoose.connection
-db.on("error", console.error.bind(console, "connection error: "))
-db.once("open", function () {
-  console.log("Connected successfully")
+db.on('error', console.error.bind(console, 'connection error: '))
+db.once('open', function () {
+  console.log('Connected successfully')
 })
 
 app.listen(port, () => {
