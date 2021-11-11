@@ -10,7 +10,7 @@ curl -H "Content-Type: application/json" -X POST https://ordersystemjsu.herokuap
 curl -H "Content-Type: application/json" -X DELETE https://ordersystemjsu.herokuapp.com/products/{id}
 
 Orders:
-curl -H "Content-Type: application/json" -X POST https://ordersystemjsu.herokuapp.com/orders -d "{\"UsersId\":\"6183e15dc180d00fece7fc59\",\"ProductsId\":\"6183e0d2c180d00fece7fc52\",\"Date\": }" 
+curl -H "Content-Type: application/json" -X POST https://ordersystemjsu.herokuapp.com/orders -d "{\"UsersId\":\"6183e15dc180d00fece7fc59\",\"ProductsId\":\"6183e0d2c180d00fece7fc52\" }" 
 
 
 userid: 6183de50c180d00fece7fc4b, 6183e15dc180d00fece7fc59

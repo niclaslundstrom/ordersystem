@@ -11,7 +11,9 @@ const OrdersSchema = new mongoose.Schema(
       required: true
     },
     Date: {
-      type: Date.now(),
+      type: Date,
+      default: Date.now()
+
     }
   },
   { versionKey: false }
