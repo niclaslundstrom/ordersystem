@@ -15,7 +15,7 @@ app.use('/users', User)
 app.use('/products', Product)
 app.use('/orders', Order)
 
-const dbconn = process.env.DBCONN || '<defult>'
+const dbconn = process.env.MONGODB_URI || '<defult>'
 
 mongoose.connect(dbconn, () => console.log('connected to db maybe'))
 
