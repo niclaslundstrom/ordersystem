@@ -15,7 +15,7 @@ app.use('/users', User)
 app.use('/products', Product)
 app.use('/orders', Order)
 
-const dbconn = process.env.MONGODB_URI || 'mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/ordersystem?retryWrites=true&w=majority'
+const dbconn = process.env.MONGODB_URI || '<defult>'
 
 mongoose.connect(dbconn, () => console.log('connected to db maybe'))
 
