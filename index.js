@@ -1,6 +1,6 @@
 //const express = require('express')
 const app = express()
-const port = process.env.PORT ||
+const port = process.env.PORT || 3000
 import express from 'express'
 import User from './routes/users.js'
 import Product from './routes/products.js'
@@ -14,8 +14,8 @@ app.get('/', (req, res) => {
 app.use('/users', User)
 app.use('/products', Product)
 app.use('/orders', Order)
-//
-const dbconn = process.env.DBCONN || 'mongodb+srv://order:order123@cluster0.q5oir.mongodb.net/ordersystem?retryWrites=true&w=majority'
+
+const dbconn = process.env.DBCONN || '<defult>'
 
 mongoose.connect(dbconn, () => console.log('connected to db maybe'))
 
